@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML-kokonaisharjoitus Osa 9 – Kulttuuritapahtuman mediasivu</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090b16;
+      --panel: #13172a;
+      --panel2: #1b2040;
+      --text: #eef2ff;
+      --muted: #b8c1e1;
+      --accent: #8b5cf6;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --line: #30375f;
+      --code: #090d1c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      background: radial-gradient(circle at top right, #21134a 0, transparent 32rem), var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: #9fe8ff;
+    }
+
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: 1rem;
+      background: #fff;
+      color: #000;
+      padding: .7rem 1rem;
+      z-index: 10;
+    }
+
+    .skip:focus {
+      left: 1rem;
+    }
+
+    header.hero {
+      padding: 3.5rem 1.25rem 2.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1040px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-weight: 800;
+      font-size: .78rem;
+    }
+
+    h1 {
+      margin: .35rem 0 .7rem;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1.03;
+    }
+
+    h2 {
+      margin: 0 0 .7rem;
+      font-size: 1.55rem;
+    }
+
+    h3 {
+      margin: 0 0 .35rem;
+    }
+
+    .lead {
+      max-width: 75ch;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      margin-top: 1.2rem;
+    }
+
+    .badge {
+      border: 1px solid #4c568c;
+      border-radius: 999px;
+      padding: .3rem .65rem;
+      color: #dce3ff;
+      background: #171c34;
+    }
+
+    nav.top {
+      padding: .8rem 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(9, 11, 22, .82);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      z-index: 4;
+    }
+
+    nav.top .wrap {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    main {
+      padding: 2rem 0 4rem;
+    }
+
+    section.card,
+    details.answer {
+      background: linear-gradient(145deg, var(--panel), #0f1325);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
+    }
+
+    .callout {
+      border-left: 4px solid var(--green);
+      padding: .85rem 1rem;
+      background: #10251f;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .steps>li,
+    .requirements>li {
+      margin: .55rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      text-align: left;
+      vertical-align: top;
+      padding: .72rem;
+      border: 1px solid var(--line);
+    }
+
+    th {
+      background: #20264a;
+    }
+
+    tr:nth-child(even) td {
+      background: #11162a;
+    }
+
+    code {
+      font-family: Consolas, "SFMono-Regular", monospace;
+      color: #d8c8ff;
+    }
+
+    pre {
+      overflow: auto;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid #303b69;
+      background: var(--code);
+      line-height: 1.5;
+      tab-size: 2;
+    }
+
+    pre code {
+      color: #dce7ff;
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    summary::marker {
+      color: var(--cyan);
+    }
+
+    .warning {
+      color: #ffe5a5;
+    }
+
+    .done {
+      display: grid;
+      gap: .55rem;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      padding: 0;
+      list-style: none;
+    }
+
+    .done li {
+      padding: .8rem;
+      background: #101a24;
+      border: 1px solid #274b4a;
+      border-radius: 10px;
+    }
+
+    footer.page {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 1.5rem 0 3rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 1rem;
+    }
+
+    .index-card {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem;
+      transition: .16s transform, .16s border-color;
+    }
+
+    .index-card:hover,
+    .index-card:focus {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .index-card strong {
+      display: block;
+      font-size: 1.08rem;
+      margin: .25rem 0;
+    }
+
+    .index-card span {
+      color: var(--muted);
+    }
+
+    @media (max-width:650px) {
+
+      th,
+      td {
+        padding: .55rem;
+      }
+
+      nav.top .wrap {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">Siirry tehtävään</a>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">HTML-kokonaisharjoitus · Osa 9/20</div>
+      <h1>Kulttuuritapahtuman mediasivu</h1>
+      <p class="lead">Tee tapahtumasivu, jossa kuva, ääninäyte, video tekstityksineen ja upotettu kartta tukevat
+        sisältöä.</p>
+      <div class="badges"><span class="badge">Uusi aihe: Multimedia</span><span class="badge">Kertaa osat
+          1–9</span><span class="badge">Yksi kokonainen projekti</span></div>
+    </div>
+  </header>
+  <nav class="top" aria-label="Harjoitussarjan navigaatio">
+    <div class="wrap"><a href="HTML-Kokonaisharjoitus-Osa8.html">← Osa 8</a><a href="../index.html">Kaikki
+        harjoitukset</a><a href="HTML-Kokonaisharjoitus-Osa10.html">Osa 10 →</a></div>
+  </nav>
+  <main id="content">
+    <div class="wrap">
+      <section class="card">
+        <h2>Tehtävän tavoite</h2>
+        <p>Suunnittele ja toteuta <strong>kulttuuritapahtuman mediasivu</strong>. Tässä tehtävässä uusi aihe on
+          <strong>Multimedia</strong>, mutta työssä pitää näkyä myös jokainen aikaisemmissa osissa opittu taito.</p>
+        <p class="callout"><strong>Kumulatiivinen periaate:</strong> osa 9 sisältää osien 1–9 osaamisen. Elementtejä ei
+          lisätä koristeeksi, vaan jokaiselle pitää olla sisällöllinen käyttötarkoitus.</p>
+      </section>
+
+      <section class="card">
+        <h2>Palautettava kokonaisuus</h2>
+        <pre><code>projekti/
+├── index.html
+├── images/
+│   └── aihe.jpg
+├── sounds/
+│   └── esittely.mp3
+├── videos/
+│   └── esittely.mp4
+└── captions/
+    └── esittely-fi.vtt</code></pre>
+        <ul class="requirements">
+          <li>Tee projekti nimeltä <code>osa9-kokonaisharjoitus</code>.</li>
+          <li>Kirjoita kaikki näkyvä sisältö suomeksi ja pidä tiedosto- sekä kansioiden nimet pienillä kirjaimilla.</li>
+          <li>Toteuta jokainen alla olevan osaamistaulukon kohta oikeassa käyttötarkoituksessa.</li>
+          <li>Älä kopioi malliratkaisua ennen omaa yritystä. Oma ratkaisu saa olla erilainen, jos rakenne on perusteltu
+            ja toimiva.</li>
+          <li>Käytä suhteellisia polkuja ja varmista, että jokainen linkki sekä kuva toimii projektikansiosta avattuna.
+          </li>
+          <li>Lomakkeen ei tarvitse lähettää tietoa palvelimelle, mutta sen kenttien, nimien ja selainvalidoinnin pitää
+            toimia.</li>
+          <li>Voit käyttää omia mediatiedostoja tai tyhjiä paikkamerkkitiedostoja, mutta kirjoita mediaelementtien
+            HTML-rakenne kokonaan.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Työvaiheet</h2>
+        <ol class="steps">
+          <li>Kirjoita sivun tavoite ja luettele käyttäjän tarvitsemat tiedot.</li>
+          <li>Luonnostele otsikkorakenne ja sivun pääalueet ennen koodaamista.</li>
+          <li>Luo kansiot ja HTML-tiedostot annetun rakenteen mukaisesti.</li>
+          <li>Toteuta sisältö ensin ilman malliratkaisun avaamista.</li>
+          <li>Käy osaamistaulukko rivi riviltä ja merkitse, missä kohtaa projektia toteutit vaatimuksen.</li>
+          <li>Testaa linkit, polut, lomakkeet ja interaktiiviset ominaisuudet selaimessa.</li>
+          <li>Vertaa lopuksi malliratkaisuun, korjaa puutteet ja perustele omat ratkaisusi.</li>
+        </ol>
+      </section>
+
+      <section class="card">
+        <h2>Osat 1–9: pakollinen osaaminen</h2>
+        <div style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Osa</th>
+                <th scope="col">Aihe</th>
+                <th scope="col">Miten taito näkyy tässä työssä</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>HTML-perusta</td>
+                <td>Rakenna validi dokumentti: DOCTYPE, kieli, head, merkistö, viewport, title, body ja kommentti.</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Tekstit ja otsikot</td>
+                <td>Jäsennä sisältö loogisilla otsikoilla ja kappaleilla sekä käytä tekstielementtejä niiden merkityksen
+                  mukaan.</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Linkit ja kuvat</td>
+                <td>Lisää toimiva navigaatio, suhteellisia linkkejä, kuva, hyvä alt-teksti sekä figure ja figcaption.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Attribuutit</td>
+                <td>Hyödynnä tarkoituksenmukaisesti id-, class-, title-, lang- ja data-attribuutteja sekä turvallista
+                  ulkoista linkkiä.</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Listat</td>
+                <td>Esitä ryhmät järjestämättömänä listana, työvaiheet järjestettynä listana ja käsitteet kuvauslistana.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Taulukot</td>
+                <td>Esitä vertailtava tieto taulukkona, jolla on caption, otsikkosolut ja selkeä rivi- ja sarakerakenne.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>Lomakkeet</td>
+                <td>Tee käytettävä lomake, jossa kentillä on labelit, name-arvot, sopivat tyypit ja selaimen validointi.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Semanttinen HTML</td>
+                <td>Rakenna sivu header-, nav-, main-, section-, article-, aside- ja footer-elementeillä sisällön
+                  merkityksen mukaan.</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Multimedia</td>
+                <td>Lisää saavutettavasti audio, video tekstityksineen, picture-rakenne sekä nimetty iframe-upotus.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Osa on valmis, kun…</h2>
+        <ul class="done">
+          <li>Kaikki osien 1–9 vaatimukset löytyvät projektista.</li>
+          <li>HTML-rakenne kertoo sisällön merkityksen.</li>
+          <li>Linkit ja tiedostopolut toimivat.</li>
+          <li>Sivu toimii myös kapealla näytöllä ilman HTML-rakenteen rikkoutumista.</li>
+          <li>Sivua voi käyttää näppäimistöllä.</li>
+          <li>Olet testannut työn selaimessa ja korjannut löytämäsi virheet.</li>
+        </ul>
+      </section>
+
+      <details class="answer">
+        <summary>Näytä malliratkaisun rakenne ja index.html</summary>
+        <p class="warning"><strong>Huomaa:</strong> tämä on vain yksi mahdollinen ratkaisu. Avaa malli vasta oman
+          yrityksen jälkeen.</p>
+        <h2>Malliratkaisun tiedostorakenne</h2>
+        <pre><code>projekti/
+├── index.html
+├── images/
+│   └── aihe.jpg
+├── sounds/
+│   └── esittely.mp3
+├── videos/
+│   └── esittely.mp4
+└── captions/
+    └── esittely-fi.vtt</code></pre>
+        <h2>Malliratkaisun index.html</h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fi"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Kulttuuritapahtuman mediasivu | HTML-harjoitus&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Malliratkaisu on yksi mahdollinen toteutustapa. --&gt;
+  &lt;header class="site-header" data-project="kokonaisharjoitus-9"&gt;
+    &lt;h1&gt;Kulttuuritapahtuman mediasivu&lt;/h1&gt;
+    &lt;p&gt;Harjoitusprojekti, jossa sisältö ja rakenne tukevat käyttäjän tavoitetta.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;Etusivu&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#sisalto"&gt;Sisältö&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#yhteys"&gt;Yhteystiedot&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer"&gt;HTML-lisätietoa&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;main id="main-content"&gt;
+    &lt;section id="sisalto"&gt;
+      &lt;h2&gt;Projektin esittely&lt;/h2&gt;
+      &lt;p&gt;&lt;strong&gt;Tärkein tavoite&lt;/strong&gt; on rakentaa &lt;em&gt;selkeä&lt;/em&gt; kokonaisuus.&lt;/p&gt;
+      &lt;p&gt;Työ etenee vaiheittain. &lt;mark&gt;Tarkista rakenne&lt;/mark&gt; ennen palautusta.&lt;/p&gt;
+      &lt;p&gt;&lt;small&gt;Harjoitusversio 1.0&lt;/small&gt; – tavoite 2&lt;sup&gt;n&lt;/sup&gt;, veden kaava H&lt;sub&gt;2&lt;/sub&gt;O.&lt;/p&gt;
+      &lt;figure&gt;
+        &lt;img src="images/aihe.jpg" alt="Kulttuuritapahtuman mediasivu esitettynä havainnollisessa kuvassa" width="800" height="450"&gt;
+        &lt;figcaption&gt;Projektin pääkuva täydentää tekstisisältöä.&lt;/figcaption&gt;
+      &lt;/figure&gt;
+      &lt;article&gt;
+        &lt;h3&gt;Ajankohtainen nosto&lt;/h3&gt;
+        &lt;p&gt;Tämä itsenäinen sisältö voidaan jakaa myös erillisenä artikkelina.&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+    &lt;section aria-labelledby="sisalto-otsikko"&gt;
+      &lt;h2 id="sisalto-otsikko"&gt;Sisältö ja työvaiheet&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Selkeä rakenne&lt;/li&gt;
+        &lt;li&gt;Ymmärrettävä sisältö&lt;/li&gt;
+        &lt;li&gt;Toimiva testaus&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;ol&gt;
+        &lt;li&gt;Suunnittele sisältö.&lt;/li&gt;
+        &lt;li&gt;Kirjoita HTML.&lt;/li&gt;
+        &lt;li&gt;Testaa selaimessa.&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;HTML&lt;/dt&gt;&lt;dd&gt;Merkintäkieli verkkosisällön rakenteelle.&lt;/dd&gt;
+        &lt;dt&gt;Selain&lt;/dt&gt;&lt;dd&gt;Ohjelma, joka tulkitsee ja näyttää HTML-sivun.&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Aikataulu ja vertailu&lt;/h2&gt;
+      &lt;table&gt;
+        &lt;caption&gt;Projektin työvaiheet ja arvioitu kesto&lt;/caption&gt;
+        &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;Vaihe&lt;/th&gt;&lt;th scope="col"&gt;Tunnit&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;&lt;td&gt;Suunnittelu&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;Toteutus&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td&gt;Testaus&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/section&gt;
+    &lt;section id="yhteys"&gt;
+      &lt;h2&gt;Ilmoittautuminen tai yhteydenotto&lt;/h2&gt;
+      &lt;form action="/laheta" method="post"&gt;
+        &lt;fieldset&gt;
+          &lt;legend&gt;Osallistujan tiedot&lt;/legend&gt;
+          &lt;p&gt;&lt;label for="name"&gt;Nimi&lt;/label&gt;&lt;br&gt;&lt;input id="name" name="name" type="text" autocomplete="name" required&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;label for="email"&gt;Sähköposti&lt;/label&gt;&lt;br&gt;&lt;input id="email" name="email" type="email" autocomplete="email" required&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;label for="message"&gt;Viesti&lt;/label&gt;&lt;br&gt;&lt;textarea id="message" name="message" minlength="10"&gt;&lt;/textarea&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;label&gt;&lt;input name="terms" type="checkbox" required&gt; Hyväksyn ehdot&lt;/label&gt;&lt;/p&gt;
+          &lt;button type="submit"&gt;Lähetä&lt;/button&gt;
+        &lt;/fieldset&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Media&lt;/h2&gt;
+      &lt;audio controls&gt;
+        &lt;source src="sounds/esittely.ogg" type="audio/ogg"&gt;
+        &lt;source src="sounds/esittely.mp3" type="audio/mpeg"&gt;
+        Selaimesi ei tue äänitiedostoa.
+      &lt;/audio&gt;
+      &lt;video controls poster="images/video-poster.jpg" width="800"&gt;
+        &lt;source src="videos/esittely.webm" type="video/webm"&gt;
+        &lt;source src="videos/esittely.mp4" type="video/mp4"&gt;
+        &lt;track kind="captions" src="captions/esittely-fi.vtt" srclang="fi" label="Suomi" default&gt;
+      &lt;/video&gt;
+      &lt;picture&gt;
+        &lt;source media="(min-width: 800px)" srcset="images/aihe-laaja.jpg"&gt;
+        &lt;img src="images/aihe-pieni.jpg" alt="Projektin aihe pienellä näytöllä" width="600" height="400"&gt;
+      &lt;/picture&gt;
+      &lt;iframe src="https://example.com/upotus" title="Projektin sijainti kartalla" loading="lazy"&gt;&lt;/iframe&gt;
+    &lt;/section&gt;
+    &lt;aside aria-labelledby="tip-title"&gt;
+      &lt;h2 id="tip-title"&gt;Testausvinkki&lt;/h2&gt;
+      &lt;p&gt;Käytä validaattoria ja testaa sivu myös näppäimistöllä.&lt;/p&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;p&gt;&lt;small&gt;Harjoitusprojekti – tarkistettu ennen palautusta.&lt;/small&gt;&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      </details>
+    </div>
+  </main>
+  <footer class="page">
+    <div class="wrap">HTML-kokonaisharjoitukset · Osa 9/20</div>
+  </footer>
+</body>
+
+</html>

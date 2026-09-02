@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML-kokonaisharjoitukset – Osat 1–20</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #090b16;
+        --panel: #13172a;
+        --panel2: #1b2040;
+        --text: #eef2ff;
+        --muted: #b8c1e1;
+        --accent: #8b5cf6;
+        --cyan: #22d3ee;
+        --green: #34d399;
+        --line: #30375f;
+        --code: #090d1c;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        line-height: 1.65;
+        background:
+          radial-gradient(circle at top right, #21134a 0, transparent 32rem),
+          var(--bg);
+        color: var(--text);
+      }
+      a {
+        color: #9fe8ff;
+      }
+      .skip {
+        position: absolute;
+        left: -9999px;
+        top: 1rem;
+        background: #fff;
+        color: #000;
+        padding: 0.7rem 1rem;
+        z-index: 10;
+      }
+      .skip:focus {
+        left: 1rem;
+      }
+      header.hero {
+        padding: 3.5rem 1.25rem 2.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .wrap {
+        width: min(1040px, calc(100% - 2rem));
+        margin-inline: auto;
+      }
+      .eyebrow {
+        color: var(--cyan);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-weight: 800;
+        font-size: 0.78rem;
+      }
+      h1 {
+        margin: 0.35rem 0 0.7rem;
+        font-size: clamp(2rem, 6vw, 4rem);
+        line-height: 1.03;
+      }
+      h2 {
+        margin: 0 0 0.7rem;
+        font-size: 1.55rem;
+      }
+      h3 {
+        margin: 0 0 0.35rem;
+      }
+      .lead {
+        max-width: 75ch;
+        color: var(--muted);
+        font-size: 1.06rem;
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-top: 1.2rem;
+      }
+      .badge {
+        border: 1px solid #4c568c;
+        border-radius: 999px;
+        padding: 0.3rem 0.65rem;
+        color: #dce3ff;
+        background: #171c34;
+      }
+      nav.top {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--line);
+        background: rgba(9, 11, 22, 0.82);
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(12px);
+        z-index: 4;
+      }
+      nav.top .wrap {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+      main {
+        padding: 2rem 0 4rem;
+      }
+      section.card,
+      details.answer {
+        background: linear-gradient(145deg, var(--panel), #0f1325);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1.25rem;
+        margin: 1rem 0;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+      }
+      .callout {
+        border-left: 4px solid var(--green);
+        padding: 0.85rem 1rem;
+        background: #10251f;
+        border-radius: 0 10px 10px 0;
+      }
+      .steps > li,
+      .requirements > li {
+        margin: 0.55rem 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.72rem;
+        border: 1px solid var(--line);
+      }
+      th {
+        background: #20264a;
+      }
+      tr:nth-child(even) td {
+        background: #11162a;
+      }
+      code {
+        font-family: Consolas, "SFMono-Regular", monospace;
+        color: #d8c8ff;
+      }
+      pre {
+        overflow: auto;
+        padding: 1rem;
+        border-radius: 12px;
+        border: 1px solid #303b69;
+        background: var(--code);
+        line-height: 1.5;
+        tab-size: 2;
+      }
+      pre code {
+        color: #dce7ff;
+      }
+      summary {
+        cursor: pointer;
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: #fff;
+      }
+      summary::marker {
+        color: var(--cyan);
+      }
+      .warning {
+        color: #ffe5a5;
+      }
+      .done {
+        display: grid;
+        gap: 0.55rem;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        padding: 0;
+        list-style: none;
+      }
+      .done li {
+        padding: 0.8rem;
+        background: #101a24;
+        border: 1px solid #274b4a;
+        border-radius: 10px;
+      }
+      footer.page {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        padding: 1.5rem 0 3rem;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+        gap: 1rem;
+      }
+      .index-card {
+        display: block;
+        color: var(--text);
+        text-decoration: none;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1rem;
+        transition:
+          0.16s transform,
+          0.16s border-color;
+      }
+      .index-card:hover,
+      .index-card:focus {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+      }
+      .index-card strong {
+        display: block;
+        font-size: 1.08rem;
+        margin: 0.25rem 0;
+      }
+      .index-card span {
+        color: var(--muted);
+      }
+      @media (max-width: 650px) {
+        th,
+        td {
+          padding: 0.55rem;
+        }
+        nav.top .wrap {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <div class="eyebrow">HTML · kumulatiivinen harjoitussarja</div>
+        <h1>20 kokonaisharjoitusta</h1>
+        <p class="lead">
+          Jokainen harjoitus kertaa kaiken siihen mennessä opitun. Osa 1 alkaa
+          HTML-perustasta, ja osa 20 yhdistää koko kurssin sisällön yhdeksi
+          lopputyöksi.
+        </p>
+      </div>
+    </header>
+    <main id="content">
+      <div class="wrap">
+        <section class="card">
+          <h2>Näin käytät sarjaa</h2>
+          <p>
+            Avaa harjoitukset järjestyksessä. Tee ensin oma ratkaisu, tarkista
+            kaikki vaatimukset ja avaa malliratkaisu vasta lopuksi. Jokainen
+            tiedosto toimii selaimessa ilman asennuksia.
+          </p>
+        </section>
+        <section>
+          <h2>Harjoitukset</h2>
+          <div class="cards">
+            <a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa1.html"
+              ><span>Osa 1/20 · kertaa osat 1–1</span
+              ><strong>Ensimmäinen esittelysivu</strong
+              ><span>Uusi aihe: HTML-perusta</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa2.html"
+              ><span>Osa 2/20 · kertaa osat 1–2</span
+              ><strong>Oppijan profiilisivu</strong
+              ><span>Uusi aihe: Tekstit ja otsikot</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa3.html"
+              ><span>Osa 3/20 · kertaa osat 1–3</span
+              ><strong>Harrastussivusto</strong
+              ><span>Uusi aihe: Linkit ja kuvat</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa4.html"
+              ><span>Osa 4/20 · kertaa osat 1–4</span
+              ><strong>Tapahtuman esittelykortti</strong
+              ><span>Uusi aihe: Attribuutit</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa5.html"
+              ><span>Osa 5/20 · kertaa osat 1–5</span
+              ><strong>Resepti- ja ruokaohjesivu</strong
+              ><span>Uusi aihe: Listat</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa6.html"
+              ><span>Osa 6/20 · kertaa osat 1–6</span
+              ><strong>Kurssin viikko-ohjelma</strong
+              ><span>Uusi aihe: Taulukot</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa7.html"
+              ><span>Osa 7/20 · kertaa osat 1–7</span
+              ><strong>Työpajan ilmoittautumissivu</strong
+              ><span>Uusi aihe: Lomakkeet</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa8.html"
+              ><span>Osa 8/20 · kertaa osat 1–8</span
+              ><strong>Verkkolehden artikkelisivu</strong
+              ><span>Uusi aihe: Semanttinen HTML</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa9.html"
+              ><span>Osa 9/20 · kertaa osat 1–9</span
+              ><strong>Kulttuuritapahtuman mediasivu</strong
+              ><span>Uusi aihe: Multimedia</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa10.html"
+              ><span>Osa 10/20 · kertaa osat 1–10</span
+              ><strong>Kaupungin matkaopas</strong
+              ><span>Uusi aihe: Listat – syventävä</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa11.html"
+              ><span>Osa 11/20 · kertaa osat 1–11</span
+              ><strong>Koulutuksen tulosraportti</strong
+              ><span>Uusi aihe: Taulukot – jatko</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa12.html"
+              ><span>Osa 12/20 · kertaa osat 1–12</span
+              ><strong>Pienyrityksen palvelusivu</strong
+              ><span>Uusi aihe: Meta ja SEO</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa13.html"
+              ><span>Osa 13/20 · kertaa osat 1–13</span
+              ><strong>Interaktiivinen tuote-esittely</strong
+              ><span>Uusi aihe: HTML API:t</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa14.html"
+              ><span>Osa 14/20 · kertaa osat 1–14</span
+              ><strong>Piirustusstudion verkkosivu</strong
+              ><span>Uusi aihe: Canvas</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa15.html"
+              ><span>Osa 15/20 · kertaa osat 1–15</span
+              ><strong>Infografiikan esittelysivu</strong
+              ><span>Uusi aihe: SVG</span></a
+            ><a
+              class="index-card"
+              href="HKokonaisharjoitukset/TML-Kokonaisharjoitus-Osa16.html"
+              ><span>Osa 16/20 · kertaa osat 1–16</span
+              ><strong>Saavutettava asiointipalvelu</strong
+              ><span>Uusi aihe: Saavutettavuus</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa17.html"
+              ><span>Osa 17/20 · kertaa osat 1–17</span
+              ><strong>Moderni tapahtumaportaali</strong
+              ><span>Uusi aihe: Modernit HTML5-ominaisuudet</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa18.html"
+              ><span>Osa 18/20 · kertaa osat 1–18</span
+              ><strong>Asiakkaan monisivuinen verkkoprojekti</strong
+              ><span>Uusi aihe: Projektityöskentely</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa19.html"
+              ><span>Osa 19/20 · kertaa osat 1–19</span
+              ><strong>Ammattimainen portfolio</strong
+              ><span>Uusi aihe: Best practices</span></a
+            ><a
+              class="index-card"
+              href="Kokonaisharjoitukset/HTML-Kokonaisharjoitus-Osa20.html"
+              ><span>Osa 20/20 · kertaa osat 1–20</span
+              ><strong>Digitaalinen oppimiskeskus</strong
+              ><span>Uusi aihe: Koko kurssin kertaus</span></a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="page">
+      <div class="wrap">HTML-kokonaisharjoitukset · Osat 1–20</div>
+    </footer>
+  </body>
+</html>
