@@ -7,11 +7,16 @@ body {
     min-width: 350px;
     background-color: #F8FAFC;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.1em;
+    font-size: 18px;
     color: #475569;
 }
 
-h1, h2, h3, .brand, .card__badge, .help-button {
+h1,
+h2,
+h3,
+.brand,
+.card__badge,
+.help-button {
     color: #0F172A;
     font-weight: 900;
 }
@@ -21,7 +26,9 @@ a {
     color: #475569;
 }
 
-#top, #main-content, footer {
+#top,
+#main-content,
+footer {
     width: 80%;
     margin: 0 auto;
 }
@@ -41,7 +48,8 @@ a {
     border-radius: 0.5em;
 }
 
-.button, .site-footer a {
+.button,
+.site-footer a {
     padding: 0.8em 1.3em;
     font-weight: 600;
     background-color: #F8FAFC;
@@ -50,14 +58,16 @@ a {
     border-radius: 13px;
 }
 
-.card__badge, .help-button {
-    padding: 0.8em 1em;
+.card__badge,
+.help-button {
+    width: 3.5em;
+    height: 3.5em;
+    padding: 0.8em;
     background-color: #dbf8fe;
     border: 1px solid rgba(37, 99, 235, 0.2);
     border-radius: 50%;
 }
 
-/* Osa 2: selectorit ja cascade */
 .hero .eyebrow {
     text-transform: uppercase;
     color: #2563EB;
@@ -65,12 +75,13 @@ a {
 
 .card:nth-child(even) {
     background-color: #dbf8fe;
+    margin-left: 5%;
 }
 
 .hero .button,
 .help-button,
 .card:nth-child(even) .card__badge,
- .card:nth-child(even) .button {
+.card:nth-child(even) .button {
     background-color: #2563EB;
     color: #FFFFFF;
 }
@@ -84,11 +95,8 @@ main .button:hover,
     background-color: rgba(219, 248, 254, 0.7);
 }
 
-/* Osa 3: Box Model */
 .help-button {
     display: block;
-    width: 3.5em;
-    height: 3.5em;
     text-align: center;
     margin-left: calc(90% - 3.5em);
 }
@@ -97,3 +105,23 @@ main .button:hover,
     box-sizing: border-box;
 }
 
+.card-list {
+    font-size: 0;
+}
+
+
+.card {
+    width: 47%;
+    font-size: 18px;
+}
+
+.card,
+nav li,
+a,
+nav {
+    display: inline-block;
+}
+
+header {
+    text-align-last: justify;
+}
