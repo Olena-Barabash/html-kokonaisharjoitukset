@@ -1,0 +1,99 @@
+/* CSS-kokonaisharjoitus, osa 3 */
+
+/* Aloita CSS:n kirjoittaminen tämän kommentin alta. */
+
+/* Osa 1: CSS:n perusteet */
+body {
+    min-width: 350px;
+    background-color: #F8FAFC;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.1em;
+    color: #475569;
+}
+
+h1, h2, h3, .brand, .card__badge, .help-button {
+    color: #0F172A;
+    font-weight: 900;
+}
+
+a {
+    text-decoration: none;
+    color: #475569;
+}
+
+#top, #main-content, footer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.hero {
+    background-color: #dbf8fe;
+    margin: 2.5em 0;
+    padding: 1.8em;
+    font-weight: 600;
+}
+
+.card {
+    margin: 1em 0;
+    padding: 1.8em;
+    background-color: #FFFFFF;
+    border: 3px solid #E2E8F0;
+    border-radius: 0.5em;
+}
+
+.button, .site-footer a {
+    padding: 0.8em 1.3em;
+    font-weight: 600;
+    background-color: #F8FAFC;
+    color: #2563EB;
+    border: 2px solid #2563EB;
+    border-radius: 13px;
+}
+
+.card__badge, .help-button {
+    padding: 0.8em 1em;
+    background-color: #dbf8fe;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 50%;
+}
+
+/* Osa 2: selectorit ja cascade */
+.hero .eyebrow {
+    text-transform: uppercase;
+    color: #2563EB;
+}
+
+.card:nth-child(even) {
+    background-color: #dbf8fe;
+}
+
+.hero .button,
+.help-button,
+.card:nth-child(even) .card__badge,
+ .card:nth-child(even) .button {
+    background-color: #2563EB;
+    color: #FFFFFF;
+}
+
+main .button:hover,
+.help-button:hover {
+    opacity: 0.8;
+}
+
+.card:nth-child(odd) .button:hover {
+    background-color: rgba(219, 248, 254, 0.7);
+}
+
+/* Osa 3: Box Model */
+.help-button {
+    display: block;
+    width: 3.5em;
+    height: 3.5em;
+    text-align: center;
+    margin-left: calc(90% - 3.5em);
+}
+
+* {
+    box-sizing: border-box;
+}
+

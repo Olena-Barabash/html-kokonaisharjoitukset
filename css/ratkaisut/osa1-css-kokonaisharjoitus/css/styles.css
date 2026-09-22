@@ -1,0 +1,76 @@
+/* CSS-kokonaisharjoitus, osa 1 */
+
+/* Aloita CSS:n kirjoittaminen tämän kommentin alta. */
+/* * {
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 95%;
+    background-color: cornsilk;
+    padding: 0 15px;
+}
+
+.skip-link, #top, .site-footer {
+    background-color: burlywood;
+}
+
+#main-content {
+    padding: 1em 0;
+}
+
+.skip-link {
+    display: block;
+}
+
+.card-list {
+    align-items: center;
+}
+
+.card {
+    display: inline-block; 
+    width: 30%;
+    height: 25%;
+    margin: 10px 0;
+    padding: 1em;
+    background-color: goldenrod;
+    border: 1px solid black;
+    border-radius: 10px;
+    
+} */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1f2937;
+  background-color: #f1f5f9;
+}
+
+h1, h2, h3 { color: #312e81; }
+a { color: #5b21b6; }
+.site-header, main, .site-footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.card {
+  margin-block: 1rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+}
+#top { border-bottom: 3px solid #8b5cf6; }
+.button {
+  padding: .65rem 1rem;
+  color: #ffffff;
+  background-color: #6d28d9;
+  border: 2px solid #6d28d9;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
