@@ -43,7 +43,10 @@ body {
     padding: 1.2rem 20%;
 } */
 
-h1, h2, h3, .brand {
+h1,
+h2,
+h3,
+.brand {
     color: #1F2D3D;
 }
 
@@ -81,7 +84,7 @@ nav li {
 }
 
 li a[aria-current="page"] {
-    border-bottom: 5px solid #2E7D6B;
+    border-bottom: 4px solid #2E7D6B;
     color: #2E7D6B;
 }
 
@@ -93,4 +96,5 @@ main {
 .hero {
     width: 100%;
     background-color: #EAF4EE;
+    padding: 1.2rem 20%;
 }
