@@ -1,3 +1,96 @@
 /* CSS-kokonaisharjoitus, osa 5 */
 
 /* Aloita CSS:n kirjoittaminen tämän kommentin alta. */
+
+/* Шрифти: Arial, Helvetica, sans-serif.
+Палітра нового варіанта:
+#1F2D3D — темний основний
+#2E7D6B — зелений акцент
+#145E52 — темно-зелений
+#EAF4EE — світло-зелений
+#F6F8FA — фон сторінки
+#FFFFFF — картки
+#D9E6DE — рамки
+#6B7C86 — другорядний текст
+#F1E7C7 — теплий акцент */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    background-color: #F6F8FA;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #6B7C86;
+}
+
+.skip-link {
+    position: absolute;
+    top: 1.2rem;
+    left: 0;
+    z-index: -1;
+}
+
+.skip-link:focus {
+    z-index: 100;
+}
+
+/* header, main, footer {
+    padding: 1.2rem 20%;
+} */
+
+h1, h2, h3, .brand {
+    color: #1F2D3D;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.2rem 20%;
+    background-color: #F6F8FA;
+}
+
+header a {
+    text-decoration: none;
+    color: #6B7C86;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+nav {
+    display: inline-block;
+    position: absolute;
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav li {
+    margin-left: 3rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #6B7C86;
+}
+
+li a[aria-current="page"] {
+    border-bottom: 5px solid #2E7D6B;
+    color: #2E7D6B;
+}
+
+main {
+    margin-top: 4.5rem;
+    scroll-margin-top: 4.5rem;
+}
+
+.hero {
+    width: 100%;
+    background-color: #EAF4EE;
+}
