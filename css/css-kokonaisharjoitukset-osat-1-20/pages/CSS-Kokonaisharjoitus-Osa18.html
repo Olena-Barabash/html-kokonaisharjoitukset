@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="fi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS-kokonaisharjoitus Osa 18 – Tuotantovalmis laskeutumissivu</title>
   <link rel="stylesheet" href="../css/harjoitukset.css">
 </head>
+
 <body>
   <a class="skip" href="#content">Siirry tehtävään</a>
-  <header class="hero"><div class="wrap"><div class="eyebrow">CSS-kokonaisharjoitus · Osa 18/20</div><h1>Tuotantovalmis laskeutumissivu</h1><p class="lead">Auditoi ja viimeistele responsiivinen sivu suorituskyvyn, saavutettavuuden, selainyhteensopivuuden ja ylläpidettävyyden näkökulmasta.</p><div class="badges"><span class="badge">Uusi aihe: Best practices ja suorituskyky</span><span class="badge">Kertaa osat 1–18</span><span class="badge">HTML + ulkoinen CSS</span></div></div></header>
-  <nav class="top" aria-label="Harjoitussarjan navigaatio"><div class="wrap"><a href="CSS-Kokonaisharjoitus-Osa17.html">← Osa 17</a><a href="../index.html">Kaikki harjoitukset</a><a href="CSS-Kokonaisharjoitus-Osa19.html">Osa 19 →</a></div></nav>
-  <main id="content"><div class="wrap">
-    <section class="card"><h2>Tehtävän tavoite</h2><p>Suunnittele ja toteuta <strong>tuotantovalmis laskeutumissivu</strong>. Uusi CSS-aihe on <strong>Best practices ja suorituskyky</strong>, mutta lopputuloksessa pitää näkyä myös jokainen aikaisemmissa osissa opittu asia.</p><p class="callout"><strong>Kumulatiivinen periaate:</strong> osa 18 sisältää osien 1–18 osaamisen. Valitse ominaisuudet käyttötarkoituksen mukaan ja perustele ratkaisut, joilla on useita mahdollisia toteutustapoja.</p></section>
-    <section class="card"><h2>Projektin tiedostorakenne</h2><pre><code>osa18-css-kokonaisharjoitus/
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">CSS-kokonaisharjoitus · Osa 18/20</div>
+      <h1>Tuotantovalmis laskeutumissivu</h1>
+      <p class="lead">Auditoi ja viimeistele responsiivinen sivu suorituskyvyn, saavutettavuuden, selainyhteensopivuuden
+        ja ylläpidettävyyden näkökulmasta.</p>
+      <div class="badges"><span class="badge">Uusi aihe: Best practices ja suorituskyky</span><span class="badge">Kertaa
+          osat 1–18</span><span class="badge">HTML + ulkoinen CSS</span></div>
+    </div>
+  </header>
+  <nav class="top" aria-label="Harjoitussarjan navigaatio">
+    <div class="wrap"><a href="CSS-Kokonaisharjoitus-Osa17.html">← Osa 17</a><a href="../index.html">Kaikki
+        harjoitukset</a><a class="my-solution" href="../../ratkaisut/osa18-css-kokonaisharjoitus/index.html"
+        target="_blank" rel="noopener noreferrer">Ratkaisuni</a><a href="CSS-Kokonaisharjoitus-Osa19.html">Osa 19 →</a>
+    </div>
+  </nav>
+  <main id="content">
+    <div class="wrap">
+      <section class="card">
+        <h2>Tehtävän tavoite</h2>
+        <p>Suunnittele ja toteuta <strong>tuotantovalmis laskeutumissivu</strong>. Uusi CSS-aihe on <strong>Best
+            practices ja suorituskyky</strong>, mutta lopputuloksessa pitää näkyä myös jokainen aikaisemmissa osissa
+          opittu asia.</p>
+        <p class="callout"><strong>Kumulatiivinen periaate:</strong> osa 18 sisältää osien 1–18 osaamisen. Valitse
+          ominaisuudet käyttötarkoituksen mukaan ja perustele ratkaisut, joilla on useita mahdollisia toteutustapoja.
+        </p>
+      </section>
+      <section class="card">
+        <h2>Projektin tiedostorakenne</h2>
+        <pre><code>osa18-css-kokonaisharjoitus/
 ├── index.html
 ├── pages/
 │   └── tietoa.html
@@ -20,28 +47,180 @@
     ├── styles.css
     ├── tokens.css
     ├── base.css
-    └── components.css</code></pre><ul class="requirements"><li>Luo projekti <code>osa18-css-kokonaisharjoitus</code> ja käytä erillistä CSS-tiedostoa.</li><li>Pidä <code>index.html</code> yksin projektin juuressa. Sijoita kaikki muut HTML-sivut <code>pages</code>-kansioon ja CSS-tiedostot <code>css</code>-kansioon.</li><li>Toteuta jokainen osaamistaulukon kohta omassa projektissasi. Kirjoita lyhyt kommentti vaikeimman ratkaisun perusteluksi.</li><li>Kokeile ensin itse. Avaa malliratkaisu vasta testauksen jälkeen.</li><li>Valitse Flexbox vain yksiulotteiseen tilanjakoon. Käytä Gridiä vasta osasta 7 alkaen.</li><li>Testaa vähintään leveydet 320 px, 768 px ja 1440 px sekä 200 % selaimen zoomaus.</li><li>Liikkeen pitää välittää käyttäjälle tietoa. Lisää liikkeetön vaihtoehto käyttäjän reduced motion -asetukselle.</li><li>Testaa kaikki lomakekontrollit näppäimistöllä ja varmista, että fokus sekä validointitilat erottuvat ilman pelkkää väriä.</li><li>Dokumentoi layer-järjestys, nimeämistapa, tokenit ja komponenttien vastuut.</li><li>Tee CSS-auditointi DevToolsilla ja kirjaa löydetyt cascade-, overflow-, saavutettavuus- ja suorituskykyongelmat.</li></ul></section>
-    <section class="card"><h2>Työvaiheet</h2><ol class="steps"><li>Tutki annettu HTML ja merkitse, mitkä osat tarvitsevat layoutin, visuaalisen hierarkian tai vuorovaikutustilan.</li><li>Luo kansiot ja linkitä <code>css/styles.css</code> oikein sekä juuren etusivulle että <code>pages</code>-kansion sivulle.</li><li>Toteuta ensin osien 1–17 kertaus ennen tämän osan uutta tekniikkaa.</li><li>Lisää osan 18 ratkaisu ja tarkista selaimen DevToolsilla, mikä sääntö todella voittaa.</li><li>Testaa pitkä teksti, kapea näkymä, näppäimistö ja vähintään yksi poikkeustilanne.</li><li>Vertaa malliratkaisuun vasta oman toteutuksen jälkeen ja kirjoita, miksi oma ratkaisusi toimii.</li></ol></section>
-    <section class="card"><h2>Osat 1–18: pakollinen osaaminen</h2><div class="table-wrap"><table><thead><tr><th scope="col">Osa</th><th scope="col">Aihe</th><th scope="col">Miten taito näkyy työssä</th></tr></thead><tbody><tr><th scope="row">1</th><td>CSS:n perusteet</td><td>Liitä ulkoinen CSS-tiedosto, kirjoita sääntöjä ja käytä elementti-, class- ja id-valitsimia, värejä, yksiköitä, fontteja sekä perusreunoja.</td></tr>
-<tr><th scope="row">2</th><td>Selectorit ja cascade</td><td>Käytä yhdistelmä-, attribuutti- ja tilavalitsimia sekä ratkaise specificity-, periytymis- ja lähdejärjestysristiriidat ilman turhaa !importantia.</td></tr>
-<tr><th scope="row">3</th><td>Box Model</td><td>Hallitse content, padding, border ja margin sekä box-sizing, leveydet, korkeudet ja overflow.</td></tr>
-<tr><th scope="row">4</th><td>Display ja normaalivirta</td><td>Hyödynnä block-, inline- ja inline-block-käyttäytymistä sekä ymmärrä piilottamisen eri tavat ja normaalivirta.</td></tr>
-<tr><th scope="row">5</th><td>Positionointi</td><td>Käytä static-, relative-, absolute-, fixed- ja sticky-positionointia sekä z-indexiä perustellusti.</td></tr>
-<tr><th scope="row">6</th><td>Flexbox</td><td>Rakenna yksiulotteisia komponentteja ja kohdistuksia flex-containerin, akselien, gapin ja flex-itemien avulla.</td></tr>
-<tr><th scope="row">7</th><td>CSS Grid</td><td>Tee kaksiulotteinen sivu- tai korttirakenne riveillä, sarakkeilla, fr-yksiköllä, minmaxilla ja grid-alueilla.</td></tr>
-<tr><th scope="row">8</th><td>Responsiivinen suunnittelu</td><td>Toteuta mobile-first-rakenne, joustavat mitat, sisältölähtöinen breakpoint ja käyttäjän asetuksia huomioivia media queryja.</td></tr>
-<tr><th scope="row">9</th><td>Värit, taustat ja gradientit</td><td>Rakenna saavutettava värijärjestelmä, taustakerroksia ja tarkoituksenmukaisia linear-, radial- tai conic-gradientteja.</td></tr>
-<tr><th scope="row">10</th><td>Typografia</td><td>Tee luettava typografinen asteikko, hallittu rivinpituus, responsiiviset fonttikoot ja selkeät linkki- sekä tekstityylit.</td></tr>
-<tr><th scope="row">11</th><td>Reunat, varjot ja efektit</td><td>Käytä borderia, radiusta, box-shadow'ta, text-shadow'ta, outlinea ja suodattimia käyttöliittymän hierarkian tukena.</td></tr>
-<tr><th scope="row">12</th><td>Transformit ja transitionit</td><td>Toteuta hallittuja translate-, rotate- ja scale-muutoksia sekä rajattuja transitioneita liikeasetukset huomioiden.</td></tr>
-<tr><th scope="row">13</th><td>Animaatiot ja @keyframes</td><td>Tee tarkoituksellinen monivaiheinen animaatio ja hallitse duration, delay, easing, iteration, direction sekä fill-mode.</td></tr>
-<tr><th scope="row">14</th><td>CSS-muuttujat ja laskentafunktiot</td><td>Rakenna design tokenit custom propertyillä ja hyödynnä var(), calc(), min(), max() sekä clamp() joustavissa mitoissa.</td></tr>
-<tr><th scope="row">15</th><td>Pseudo-luokat, pseudoelementit ja UI-tilat</td><td>Tyylittele hover-, focus-, checked-, disabled- ja validointitilat sekä käytä ::before-, ::after-, ::marker- ja ::selection-rakenteita.</td></tr>
-<tr><th scope="row">16</th><td>Lomaketyylit ja UI-komponentit</td><td>Tee saavutettavat kentät, labelit, painikkeet, validointitilat, checkboxit, radiot, selectit ja responsiiviset kenttäryhmät.</td></tr>
-<tr><th scope="row">17</th><td>Moderni CSS-arkkitehtuuri</td><td>Jäsennä CSS layereihin, tokeneihin, base-, layout-, component- ja utility-vastuisiin sekä käytä johdonmukaista BEM-tyyppistä nimeämistä.</td></tr>
-<tr><th scope="row">18</th><td>Best practices ja suorituskyky</td><td>Auditoi selectorit, ylivuodot, renderöintikustannus, focus, kontrasti, reduced motion, selainyhteensopivuus ja julkaisukunto.</td></tr></tbody></table></div></section>
-    <section class="card"><h2>Osa on valmis, kun…</h2><ul class="done"><li>Kaikki osien 1–18 vaatimukset löytyvät CSS:stä.</li><li>CSS linkittyy oikein sekä juuresta että pages-kansiosta.</li><li>Selectorit osuvat tarkoitettuihin elementteihin ilman tarpeetonta specificityä.</li><li>Layout ei aiheuta vaakasuuntaista ylivuotoa.</li><li>Fokus, kontrasti ja tekstin luettavuus toimivat.</li><li>Olet testannut ja perustellut keskeiset ratkaisut.</li></ul></section>
-    <details class="answer"><summary>Näytä malliratkaisun HTML ja CSS</summary><p class="warning"><strong>Huomaa:</strong> malliratkaisu on yksi mahdollinen toteutus. Avaa se vasta oman yrityksen jälkeen.</p><h2>Malliratkaisun tiedostorakenne</h2><pre><code>osa18-css-kokonaisharjoitus/
+    └── components.css</code></pre>
+        <ul class="requirements">
+          <li>Luo projekti <code>osa18-css-kokonaisharjoitus</code> ja käytä erillistä CSS-tiedostoa.</li>
+          <li>Pidä <code>index.html</code> yksin projektin juuressa. Sijoita kaikki muut HTML-sivut
+            <code>pages</code>-kansioon ja CSS-tiedostot <code>css</code>-kansioon.
+          </li>
+          <li>Toteuta jokainen osaamistaulukon kohta omassa projektissasi. Kirjoita lyhyt kommentti vaikeimman ratkaisun
+            perusteluksi.</li>
+          <li>Kokeile ensin itse. Avaa malliratkaisu vasta testauksen jälkeen.</li>
+          <li>Valitse Flexbox vain yksiulotteiseen tilanjakoon. Käytä Gridiä vasta osasta 7 alkaen.</li>
+          <li>Testaa vähintään leveydet 320 px, 768 px ja 1440 px sekä 200 % selaimen zoomaus.</li>
+          <li>Liikkeen pitää välittää käyttäjälle tietoa. Lisää liikkeetön vaihtoehto käyttäjän reduced motion
+            -asetukselle.</li>
+          <li>Testaa kaikki lomakekontrollit näppäimistöllä ja varmista, että fokus sekä validointitilat erottuvat ilman
+            pelkkää väriä.</li>
+          <li>Dokumentoi layer-järjestys, nimeämistapa, tokenit ja komponenttien vastuut.</li>
+          <li>Tee CSS-auditointi DevToolsilla ja kirjaa löydetyt cascade-, overflow-, saavutettavuus- ja
+            suorituskykyongelmat.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <h2>Työvaiheet</h2>
+        <ol class="steps">
+          <li>Tutki annettu HTML ja merkitse, mitkä osat tarvitsevat layoutin, visuaalisen hierarkian tai
+            vuorovaikutustilan.</li>
+          <li>Luo kansiot ja linkitä <code>css/styles.css</code> oikein sekä juuren etusivulle että
+            <code>pages</code>-kansion sivulle.
+          </li>
+          <li>Toteuta ensin osien 1–17 kertaus ennen tämän osan uutta tekniikkaa.</li>
+          <li>Lisää osan 18 ratkaisu ja tarkista selaimen DevToolsilla, mikä sääntö todella voittaa.</li>
+          <li>Testaa pitkä teksti, kapea näkymä, näppäimistö ja vähintään yksi poikkeustilanne.</li>
+          <li>Vertaa malliratkaisuun vasta oman toteutuksen jälkeen ja kirjoita, miksi oma ratkaisusi toimii.</li>
+        </ol>
+      </section>
+      <section class="card">
+        <h2>Osat 1–18: pakollinen osaaminen</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Osa</th>
+                <th scope="col">Aihe</th>
+                <th scope="col">Miten taito näkyy työssä</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>CSS:n perusteet</td>
+                <td>Liitä ulkoinen CSS-tiedosto, kirjoita sääntöjä ja käytä elementti-, class- ja id-valitsimia, värejä,
+                  yksiköitä, fontteja sekä perusreunoja.</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Selectorit ja cascade</td>
+                <td>Käytä yhdistelmä-, attribuutti- ja tilavalitsimia sekä ratkaise specificity-, periytymis- ja
+                  lähdejärjestysristiriidat ilman turhaa !importantia.</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Box Model</td>
+                <td>Hallitse content, padding, border ja margin sekä box-sizing, leveydet, korkeudet ja overflow.</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Display ja normaalivirta</td>
+                <td>Hyödynnä block-, inline- ja inline-block-käyttäytymistä sekä ymmärrä piilottamisen eri tavat ja
+                  normaalivirta.</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Positionointi</td>
+                <td>Käytä static-, relative-, absolute-, fixed- ja sticky-positionointia sekä z-indexiä perustellusti.
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Flexbox</td>
+                <td>Rakenna yksiulotteisia komponentteja ja kohdistuksia flex-containerin, akselien, gapin ja
+                  flex-itemien avulla.</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>CSS Grid</td>
+                <td>Tee kaksiulotteinen sivu- tai korttirakenne riveillä, sarakkeilla, fr-yksiköllä, minmaxilla ja
+                  grid-alueilla.</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Responsiivinen suunnittelu</td>
+                <td>Toteuta mobile-first-rakenne, joustavat mitat, sisältölähtöinen breakpoint ja käyttäjän asetuksia
+                  huomioivia media queryja.</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Värit, taustat ja gradientit</td>
+                <td>Rakenna saavutettava värijärjestelmä, taustakerroksia ja tarkoituksenmukaisia linear-, radial- tai
+                  conic-gradientteja.</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>Typografia</td>
+                <td>Tee luettava typografinen asteikko, hallittu rivinpituus, responsiiviset fonttikoot ja selkeät
+                  linkki- sekä tekstityylit.</td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td>Reunat, varjot ja efektit</td>
+                <td>Käytä borderia, radiusta, box-shadow'ta, text-shadow'ta, outlinea ja suodattimia käyttöliittymän
+                  hierarkian tukena.</td>
+              </tr>
+              <tr>
+                <th scope="row">12</th>
+                <td>Transformit ja transitionit</td>
+                <td>Toteuta hallittuja translate-, rotate- ja scale-muutoksia sekä rajattuja transitioneita
+                  liikeasetukset huomioiden.</td>
+              </tr>
+              <tr>
+                <th scope="row">13</th>
+                <td>Animaatiot ja @keyframes</td>
+                <td>Tee tarkoituksellinen monivaiheinen animaatio ja hallitse duration, delay, easing, iteration,
+                  direction sekä fill-mode.</td>
+              </tr>
+              <tr>
+                <th scope="row">14</th>
+                <td>CSS-muuttujat ja laskentafunktiot</td>
+                <td>Rakenna design tokenit custom propertyillä ja hyödynnä var(), calc(), min(), max() sekä clamp()
+                  joustavissa mitoissa.</td>
+              </tr>
+              <tr>
+                <th scope="row">15</th>
+                <td>Pseudo-luokat, pseudoelementit ja UI-tilat</td>
+                <td>Tyylittele hover-, focus-, checked-, disabled- ja validointitilat sekä käytä ::before-, ::after-,
+                  ::marker- ja ::selection-rakenteita.</td>
+              </tr>
+              <tr>
+                <th scope="row">16</th>
+                <td>Lomaketyylit ja UI-komponentit</td>
+                <td>Tee saavutettavat kentät, labelit, painikkeet, validointitilat, checkboxit, radiot, selectit ja
+                  responsiiviset kenttäryhmät.</td>
+              </tr>
+              <tr>
+                <th scope="row">17</th>
+                <td>Moderni CSS-arkkitehtuuri</td>
+                <td>Jäsennä CSS layereihin, tokeneihin, base-, layout-, component- ja utility-vastuisiin sekä käytä
+                  johdonmukaista BEM-tyyppistä nimeämistä.</td>
+              </tr>
+              <tr>
+                <th scope="row">18</th>
+                <td>Best practices ja suorituskyky</td>
+                <td>Auditoi selectorit, ylivuodot, renderöintikustannus, focus, kontrasti, reduced motion,
+                  selainyhteensopivuus ja julkaisukunto.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Osa on valmis, kun…</h2>
+        <ul class="done">
+          <li>Kaikki osien 1–18 vaatimukset löytyvät CSS:stä.</li>
+          <li>CSS linkittyy oikein sekä juuresta että pages-kansiosta.</li>
+          <li>Selectorit osuvat tarkoitettuihin elementteihin ilman tarpeetonta specificityä.</li>
+          <li>Layout ei aiheuta vaakasuuntaista ylivuotoa.</li>
+          <li>Fokus, kontrasti ja tekstin luettavuus toimivat.</li>
+          <li>Olet testannut ja perustellut keskeiset ratkaisut.</li>
+        </ul>
+      </section>
+      <details class="answer">
+        <summary>Näytä malliratkaisun HTML ja CSS</summary>
+        <p class="warning"><strong>Huomaa:</strong> malliratkaisu on yksi mahdollinen toteutus. Avaa se vasta oman
+          yrityksen jälkeen.</p>
+        <h2>Malliratkaisun tiedostorakenne</h2>
+        <pre><code>osa18-css-kokonaisharjoitus/
 ├── index.html
 ├── pages/
 │   └── tietoa.html
@@ -49,7 +228,9 @@
     ├── styles.css
     ├── tokens.css
     ├── base.css
-    └── components.css</code></pre><h2>Malliratkaisun index.html</h2><pre><code>&lt;!DOCTYPE html&gt;
+    └── components.css</code></pre>
+        <h2>Malliratkaisun index.html</h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="fi"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
@@ -116,7 +297,9 @@
   &lt;button class="help-button" type="button" aria-label="Avaa ohje"&gt;?&lt;/button&gt;
   &lt;footer class="site-footer"&gt;&lt;p&gt;CSS-kokonaisharjoitus · Osa 18&lt;/p&gt;&lt;/footer&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h2>Malliratkaisun pages/tietoa.html</h2><pre><code>&lt;!DOCTYPE html&gt;
+&lt;/html&gt;</code></pre>
+        <h2>Malliratkaisun pages/tietoa.html</h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="fi"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
@@ -129,7 +312,9 @@
   &lt;main&gt;&lt;h1&gt;Tietoa projektista&lt;/h1&gt;&lt;p&gt;Tämä sivu sijaitsee pages-kansiossa.&lt;/p&gt;&lt;/main&gt;
   &lt;footer class="site-footer"&gt;&lt;a href="../index.html"&gt;Takaisin etusivulle&lt;/a&gt;&lt;/footer&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h2>Malliratkaisun css/styles.css</h2><pre><code>/* Osa 17: arkkitehtuuri */
+&lt;/html&gt;</code></pre>
+        <h2>Malliratkaisun css/styles.css</h2>
+        <pre><code>/* Osa 17: arkkitehtuuri */
 @layer reset, base, components, utilities;
 
 @layer base {
@@ -364,8 +549,13 @@ input[type="checkbox"], input[type="radio"] { width: auto; accent-color: var(--c
 @media (forced-colors: active) { .card { border: 1px solid CanvasText; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
-}</code></pre></details>
-  </div></main>
-  <footer class="page"><div class="wrap">CSS-kokonaisharjoitukset · Osa 18/20</div></footer>
+}</code></pre>
+      </details>
+    </div>
+  </main>
+  <footer class="page">
+    <div class="wrap">CSS-kokonaisharjoitukset · Osa 18/20</div>
+  </footer>
 </body>
+
 </html>

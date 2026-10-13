@@ -1,36 +1,145 @@
 <!DOCTYPE html>
 <html lang="fi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS-kokonaisharjoitus Osa 5 – Tuote-esittely positionoinnilla</title>
   <link rel="stylesheet" href="../css/harjoitukset.css">
 </head>
+
 <body>
   <a class="skip" href="#content">Siirry tehtävään</a>
-  <header class="hero"><div class="wrap"><div class="eyebrow">CSS-kokonaisharjoitus · Osa 5/20</div><h1>Tuote-esittely positionoinnilla</h1><p class="lead">Tee tuotekortti, jossa badge, sticky-toiminnot ja apupainike käyttävät eri positionointitapoja.</p><div class="badges"><span class="badge">Uusi aihe: Positionointi</span><span class="badge">Kertaa osat 1–5</span><span class="badge">HTML + ulkoinen CSS</span></div></div></header>
-  <nav class="top" aria-label="Harjoitussarjan navigaatio"><div class="wrap"><a href="CSS-Kokonaisharjoitus-Osa4.html">← Osa 4</a><a href="../index.html">Kaikki harjoitukset</a><a href="CSS-Kokonaisharjoitus-Osa6.html">Osa 6 →</a></div></nav>
-  <main id="content"><div class="wrap">
-    <section class="card"><h2>Tehtävän tavoite</h2><p>Suunnittele ja toteuta <strong>tuote-esittely positionoinnilla</strong>. Uusi CSS-aihe on <strong>Positionointi</strong>, mutta lopputuloksessa pitää näkyä myös jokainen aikaisemmissa osissa opittu asia.</p><p class="callout"><strong>Kumulatiivinen periaate:</strong> osa 5 sisältää osien 1–5 osaamisen. Valitse ominaisuudet käyttötarkoituksen mukaan ja perustele ratkaisut, joilla on useita mahdollisia toteutustapoja.</p></section>
-    <section class="card"><h2>Projektin tiedostorakenne</h2><pre><code>osa5-css-kokonaisharjoitus/
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">CSS-kokonaisharjoitus · Osa 5/20</div>
+      <h1>Tuote-esittely positionoinnilla</h1>
+      <p class="lead">Tee tuotekortti, jossa badge, sticky-toiminnot ja apupainike käyttävät eri positionointitapoja.
+      </p>
+      <div class="badges"><span class="badge">Uusi aihe: Positionointi</span><span class="badge">Kertaa osat
+          1–5</span><span class="badge">HTML + ulkoinen CSS</span></div>
+    </div>
+  </header>
+  <nav class="top" aria-label="Harjoitussarjan navigaatio">
+    <div class="wrap"><a href="CSS-Kokonaisharjoitus-Osa4.html">← Osa 4</a><a href="../index.html">Kaikki
+        harjoitukset</a><a class="my-solution" href="../../ratkaisut/osa5-css-kokonaisharjoitus/index.html"
+        target="_blank" rel="noopener noreferrer">Ratkaisuni</a><a href="CSS-Kokonaisharjoitus-Osa6.html">Osa 6 →</a>
+    </div>
+  </nav>
+  <main id="content">
+    <div class="wrap">
+      <section class="card">
+        <h2>Tehtävän tavoite</h2>
+        <p>Suunnittele ja toteuta <strong>tuote-esittely positionoinnilla</strong>. Uusi CSS-aihe on
+          <strong>Positionointi</strong>, mutta lopputuloksessa pitää näkyä myös jokainen aikaisemmissa osissa opittu
+          asia.
+        </p>
+        <p class="callout"><strong>Kumulatiivinen periaate:</strong> osa 5 sisältää osien 1–5 osaamisen. Valitse
+          ominaisuudet käyttötarkoituksen mukaan ja perustele ratkaisut, joilla on useita mahdollisia toteutustapoja.
+        </p>
+      </section>
+      <section class="card">
+        <h2>Projektin tiedostorakenne</h2>
+        <pre><code>osa5-css-kokonaisharjoitus/
 ├── index.html
 ├── pages/
 │   └── tietoa.html
 └── css/
-    └── styles.css</code></pre><ul class="requirements"><li>Luo projekti <code>osa5-css-kokonaisharjoitus</code> ja käytä erillistä CSS-tiedostoa.</li><li>Pidä <code>index.html</code> yksin projektin juuressa. Sijoita kaikki muut HTML-sivut <code>pages</code>-kansioon ja CSS-tiedostot <code>css</code>-kansioon.</li><li>Toteuta jokainen osaamistaulukon kohta omassa projektissasi. Kirjoita lyhyt kommentti vaikeimman ratkaisun perusteluksi.</li><li>Kokeile ensin itse. Avaa malliratkaisu vasta testauksen jälkeen.</li><li>Älä käytä Flexboxia tai Gridiä ennen kuin ne kuuluvat harjoituksen opittuihin asioihin.</li></ul></section>
-    <section class="card"><h2>Työvaiheet</h2><ol class="steps"><li>Tutki annettu HTML ja merkitse, mitkä osat tarvitsevat layoutin, visuaalisen hierarkian tai vuorovaikutustilan.</li><li>Luo kansiot ja linkitä <code>css/styles.css</code> oikein sekä juuren etusivulle että <code>pages</code>-kansion sivulle.</li><li>Toteuta ensin osien 1–4 kertaus ennen tämän osan uutta tekniikkaa.</li><li>Lisää osan 5 ratkaisu ja tarkista selaimen DevToolsilla, mikä sääntö todella voittaa.</li><li>Testaa pitkä teksti, kapea näkymä, näppäimistö ja vähintään yksi poikkeustilanne.</li><li>Vertaa malliratkaisuun vasta oman toteutuksen jälkeen ja kirjoita, miksi oma ratkaisusi toimii.</li></ol></section>
-    <section class="card"><h2>Osat 1–5: pakollinen osaaminen</h2><div class="table-wrap"><table><thead><tr><th scope="col">Osa</th><th scope="col">Aihe</th><th scope="col">Miten taito näkyy työssä</th></tr></thead><tbody><tr><th scope="row">1</th><td>CSS:n perusteet</td><td>Liitä ulkoinen CSS-tiedosto, kirjoita sääntöjä ja käytä elementti-, class- ja id-valitsimia, värejä, yksiköitä, fontteja sekä perusreunoja.</td></tr>
-<tr><th scope="row">2</th><td>Selectorit ja cascade</td><td>Käytä yhdistelmä-, attribuutti- ja tilavalitsimia sekä ratkaise specificity-, periytymis- ja lähdejärjestysristiriidat ilman turhaa !importantia.</td></tr>
-<tr><th scope="row">3</th><td>Box Model</td><td>Hallitse content, padding, border ja margin sekä box-sizing, leveydet, korkeudet ja overflow.</td></tr>
-<tr><th scope="row">4</th><td>Display ja normaalivirta</td><td>Hyödynnä block-, inline- ja inline-block-käyttäytymistä sekä ymmärrä piilottamisen eri tavat ja normaalivirta.</td></tr>
-<tr><th scope="row">5</th><td>Positionointi</td><td>Käytä static-, relative-, absolute-, fixed- ja sticky-positionointia sekä z-indexiä perustellusti.</td></tr></tbody></table></div></section>
-    <section class="card"><h2>Osa on valmis, kun…</h2><ul class="done"><li>Kaikki osien 1–5 vaatimukset löytyvät CSS:stä.</li><li>CSS linkittyy oikein sekä juuresta että pages-kansiosta.</li><li>Selectorit osuvat tarkoitettuihin elementteihin ilman tarpeetonta specificityä.</li><li>Layout ei aiheuta vaakasuuntaista ylivuotoa.</li><li>Fokus, kontrasti ja tekstin luettavuus toimivat.</li><li>Olet testannut ja perustellut keskeiset ratkaisut.</li></ul></section>
-    <details class="answer"><summary>Näytä malliratkaisun HTML ja CSS</summary><p class="warning"><strong>Huomaa:</strong> malliratkaisu on yksi mahdollinen toteutus. Avaa se vasta oman yrityksen jälkeen.</p><h2>Malliratkaisun tiedostorakenne</h2><pre><code>osa5-css-kokonaisharjoitus/
+    └── styles.css</code></pre>
+        <ul class="requirements">
+          <li>Luo projekti <code>osa5-css-kokonaisharjoitus</code> ja käytä erillistä CSS-tiedostoa.</li>
+          <li>Pidä <code>index.html</code> yksin projektin juuressa. Sijoita kaikki muut HTML-sivut
+            <code>pages</code>-kansioon ja CSS-tiedostot <code>css</code>-kansioon.
+          </li>
+          <li>Toteuta jokainen osaamistaulukon kohta omassa projektissasi. Kirjoita lyhyt kommentti vaikeimman ratkaisun
+            perusteluksi.</li>
+          <li>Kokeile ensin itse. Avaa malliratkaisu vasta testauksen jälkeen.</li>
+          <li>Älä käytä Flexboxia tai Gridiä ennen kuin ne kuuluvat harjoituksen opittuihin asioihin.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <h2>Työvaiheet</h2>
+        <ol class="steps">
+          <li>Tutki annettu HTML ja merkitse, mitkä osat tarvitsevat layoutin, visuaalisen hierarkian tai
+            vuorovaikutustilan.</li>
+          <li>Luo kansiot ja linkitä <code>css/styles.css</code> oikein sekä juuren etusivulle että
+            <code>pages</code>-kansion sivulle.
+          </li>
+          <li>Toteuta ensin osien 1–4 kertaus ennen tämän osan uutta tekniikkaa.</li>
+          <li>Lisää osan 5 ratkaisu ja tarkista selaimen DevToolsilla, mikä sääntö todella voittaa.</li>
+          <li>Testaa pitkä teksti, kapea näkymä, näppäimistö ja vähintään yksi poikkeustilanne.</li>
+          <li>Vertaa malliratkaisuun vasta oman toteutuksen jälkeen ja kirjoita, miksi oma ratkaisusi toimii.</li>
+        </ol>
+      </section>
+      <section class="card">
+        <h2>Osat 1–5: pakollinen osaaminen</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Osa</th>
+                <th scope="col">Aihe</th>
+                <th scope="col">Miten taito näkyy työssä</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>CSS:n perusteet</td>
+                <td>Liitä ulkoinen CSS-tiedosto, kirjoita sääntöjä ja käytä elementti-, class- ja id-valitsimia, värejä,
+                  yksiköitä, fontteja sekä perusreunoja.</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Selectorit ja cascade</td>
+                <td>Käytä yhdistelmä-, attribuutti- ja tilavalitsimia sekä ratkaise specificity-, periytymis- ja
+                  lähdejärjestysristiriidat ilman turhaa !importantia.</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Box Model</td>
+                <td>Hallitse content, padding, border ja margin sekä box-sizing, leveydet, korkeudet ja overflow.</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Display ja normaalivirta</td>
+                <td>Hyödynnä block-, inline- ja inline-block-käyttäytymistä sekä ymmärrä piilottamisen eri tavat ja
+                  normaalivirta.</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Positionointi</td>
+                <td>Käytä static-, relative-, absolute-, fixed- ja sticky-positionointia sekä z-indexiä perustellusti.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Osa on valmis, kun…</h2>
+        <ul class="done">
+          <li>Kaikki osien 1–5 vaatimukset löytyvät CSS:stä.</li>
+          <li>CSS linkittyy oikein sekä juuresta että pages-kansiosta.</li>
+          <li>Selectorit osuvat tarkoitettuihin elementteihin ilman tarpeetonta specificityä.</li>
+          <li>Layout ei aiheuta vaakasuuntaista ylivuotoa.</li>
+          <li>Fokus, kontrasti ja tekstin luettavuus toimivat.</li>
+          <li>Olet testannut ja perustellut keskeiset ratkaisut.</li>
+        </ul>
+      </section>
+      <details class="answer">
+        <summary>Näytä malliratkaisun HTML ja CSS</summary>
+        <p class="warning"><strong>Huomaa:</strong> malliratkaisu on yksi mahdollinen toteutus. Avaa se vasta oman
+          yrityksen jälkeen.</p>
+        <h2>Malliratkaisun tiedostorakenne</h2>
+        <pre><code>osa5-css-kokonaisharjoitus/
 ├── index.html
 ├── pages/
 │   └── tietoa.html
 └── css/
-    └── styles.css</code></pre><h2>Malliratkaisun index.html</h2><pre><code>&lt;!DOCTYPE html&gt;
+    └── styles.css</code></pre>
+        <h2>Malliratkaisun index.html</h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="fi"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
@@ -85,7 +194,9 @@
   &lt;button class="help-button" type="button" aria-label="Avaa ohje"&gt;?&lt;/button&gt;
   &lt;footer class="site-footer"&gt;&lt;p&gt;CSS-kokonaisharjoitus · Osa 5&lt;/p&gt;&lt;/footer&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h2>Malliratkaisun pages/tietoa.html</h2><pre><code>&lt;!DOCTYPE html&gt;
+&lt;/html&gt;</code></pre>
+        <h2>Malliratkaisun pages/tietoa.html</h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="fi"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
@@ -98,7 +209,9 @@
   &lt;main&gt;&lt;h1&gt;Tietoa projektista&lt;/h1&gt;&lt;p&gt;Tämä sivu sijaitsee pages-kansiossa.&lt;/p&gt;&lt;/main&gt;
   &lt;footer class="site-footer"&gt;&lt;a href="../index.html"&gt;Takaisin etusivulle&lt;/a&gt;&lt;/footer&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h2>Malliratkaisun css/styles.css</h2><pre><code>/* Osa 1: CSS:n perusteet */
+&lt;/html&gt;</code></pre>
+        <h2>Malliratkaisun css/styles.css</h2>
+        <pre><code>/* Osa 1: CSS:n perusteet */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -171,8 +284,13 @@ img { max-width: 100%; height: auto; }
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-}</code></pre></details>
-  </div></main>
-  <footer class="page"><div class="wrap">CSS-kokonaisharjoitukset · Osa 5/20</div></footer>
+}</code></pre>
+      </details>
+    </div>
+  </main>
+  <footer class="page">
+    <div class="wrap">CSS-kokonaisharjoitukset · Osa 5/20</div>
+  </footer>
 </body>
+
 </html>
