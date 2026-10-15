@@ -3,6 +3,10 @@
 /* Aloita CSS:n kirjoittaminen tämän kommentin alta. */
 
 /* Osa 1: CSS:n perusteet */
+* {
+    box-sizing: border-box;
+}
+
 body {
     min-width: 350px;
     background-color: #F8FAFC;
@@ -26,8 +30,12 @@ a {
     color: #475569;
 }
 
-#top,
-#main-content,
+a[aria-current="page"] {
+    border-bottom: 3px solid #2563EB;
+}
+
+.site-header,
+main,
 footer {
     width: 80%;
     margin: 0 auto;
@@ -68,30 +76,31 @@ footer {
     border-radius: 50%;
 }
 
-.hero .eyebrow {
+.eyebrow {
     text-transform: uppercase;
     color: #2563EB;
 }
 
-.card:nth-child(even) {
+.card--featured {
     background-color: #dbf8fe;
     margin-left: 5%;
 }
 
-.hero .button,
+.button--primary,
 .help-button,
-.card:nth-child(even) .card__badge,
-.card:nth-child(even) .button {
+.card.card--featured .card__badge,
+.card.card--featured .button {
     background-color: #2563EB;
     color: #FFFFFF;
 }
 
-main .button:hover,
+.button:hover,
 .help-button:hover {
     opacity: 0.8;
 }
 
-.card:nth-child(odd) .button:hover {
+.card:nth-child(odd) .button:hover,
+.site-footer a:hover {
     background-color: rgba(219, 248, 254, 0.7);
 }
 
@@ -109,19 +118,18 @@ main .button:hover,
     font-size: 0;
 }
 
-
 .card {
     width: 47%;
     font-size: 18px;
 }
 
 .card,
-nav li,
+.nav-list li,
 a,
 nav {
     display: inline-block;
 }
 
-header {
+#top {
     text-align-last: justify;
 }

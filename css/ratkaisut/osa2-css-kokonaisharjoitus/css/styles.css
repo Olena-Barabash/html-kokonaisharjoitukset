@@ -1,7 +1,6 @@
 /* CSS-kokonaisharjoitus, osa 2 */
 
 /* Aloita CSS:n kirjoittaminen tämän kommentin alta. */
-
 body {
     max-width: 70%;
     margin: auto;
@@ -19,7 +18,7 @@ h1, h2, h3, .brand, .card__badge {
     font-weight: 900;
 }
 
-header.site-header {
+#top {
     position: relative;
     height: 3em;
     margin-top: 2em;
@@ -41,18 +40,22 @@ nav {
     list-style: none;
 }
 
-nav ul {
+.nav-list {
     margin: 0;
 }
 
-nav li {
+.nav-list li {
     display: inline-block;
     margin-left: 3em;    
 }
 
-nav li a {
+.nav-list a {
     font-weight: 600;
     color: #475569;
+}
+
+a[aria-current="page"] {
+    border-bottom: 3px solid #2563EB;
 }
 
 .button {
@@ -81,7 +84,7 @@ nav li a {
     border-color: rgba(37, 99, 235, 0.1);
 }
 
-.card .card__badge {
+.card__badge {
     display: inline-block;
     padding: 0.8em;
     background-color: #dbf8fe;
@@ -105,7 +108,7 @@ nav li a {
     font-weight: 600;
 }
 
-.hero .eyebrow {
+.eyebrow {
     color: #2563EB;    
     
     text-transform: uppercase;
@@ -123,51 +126,10 @@ nav li a {
     color: #F8FAFC;
 }
 
+.help-button:hover {
+    cursor: pointer;
+}
+
 .site-footer {
     text-align: center;
 }
-
-/* Osa 1: CSS:n perusteet */
-/* body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #1f2937;
-  background-color: #f1f5f9;
-}
-
-h1, h2, h3 { color: #312e81; }
-a { color: #5b21b6; }
-.site-header, main, .site-footer {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 1rem;
-}
-.card {
-  margin-block: 1rem;
-  padding: 1rem;
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-}
-#top { border-bottom: 3px solid #8b5cf6; }
-.button {
-  padding: .65rem 1rem;
-  color: #ffffff;
-  background-color: #6d28d9;
-  border: 2px solid #6d28d9;
-  border-radius: 8px;
-  text-decoration: none;
-} */
-
-/* Osa 2: selectorit ja cascade */
-/* .card > .card__title { margin-top: 0; }
-.card .card__text { color: #475569; }
-.card__title + .card__text { font-weight: 500; }
-a[href^="#"] { text-underline-offset: .2em; }
-.nav-list li:first-child { font-weight: 700; }
-.button:hover { background-color: #4c1d95; }
-.button:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 3px; }
-.card--featured::before { content: "Suositus"; color: #6d28d9; font-weight: 700; } */
-/* Luokkavalitsin voittaa tässä elementtivalitsimen ilman !importantia. */

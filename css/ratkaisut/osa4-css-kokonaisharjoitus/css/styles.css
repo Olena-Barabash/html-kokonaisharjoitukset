@@ -1,3 +1,137 @@
 /* CSS-kokonaisharjoitus, osa 4 */
 
 /* Aloita CSS:n kirjoittaminen tämän kommentin alta. */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 350px;
+    background-color: #F8FAFC;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    color: #475569;
+}
+
+.skip-link {
+    visibility: hidden;
+}
+
+h1,
+h2,
+h3,
+.brand,
+.card__badge,
+.help-button {
+    color: #0F172A;
+    font-weight: 900;
+}
+
+a {
+    text-decoration: none;
+    color: #475569;
+}
+
+a[aria-current="page"] {
+    border-bottom: 3px solid #2563EB;
+}
+
+.site-header,
+main,
+footer {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.hero {
+    background-color: #dbf8fe;
+    margin: 2.5em 0;
+    padding: 1.8em;
+    font-weight: 600;
+}
+
+.card {
+    margin: 1em 0;
+    padding: 1.8em;
+    background-color: #FFFFFF;
+    border: 3px solid #E2E8F0;
+    border-radius: 0.5em;
+}
+
+.button,
+.site-footer a {
+    padding: 0.8em 1.3em;
+    font-weight: 600;
+    background-color: #F8FAFC;
+    color: #2563EB;
+    border: 2px solid #2563EB;
+    border-radius: 13px;
+}
+
+.card__badge,
+.help-button {
+    width: 3.5em;
+    height: 3.5em;
+    padding: 0.8em;
+    background-color: #dbf8fe;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 50%;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    color: #2563EB;
+}
+
+.card--featured {
+    background-color: #dbf8fe;
+    margin-left: 5%;
+}
+
+.button--primary,
+.help-button,
+.card.card--featured .card__badge,
+.card.card--featured .button {
+    background-color: #2563EB;
+    color: #FFFFFF;
+}
+
+.button:hover,
+.help-button:hover {
+    opacity: 0.8;
+}
+
+.card:nth-child(odd) .button:hover,
+.site-footer a:hover {
+    background-color: rgba(219, 248, 254, 0.7);
+}
+
+.help-button {
+    display: block;
+    text-align: center;
+    margin-left: calc(90% - 3.5em);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.card-list {
+    font-size: 0;
+}
+
+.card {
+    width: 47%;
+    font-size: 18px;
+}
+
+.card,
+.nav-list li,
+a,
+nav {
+    display: inline-block;
+}
+
+#top {
+    text-align-last: justify;
+}

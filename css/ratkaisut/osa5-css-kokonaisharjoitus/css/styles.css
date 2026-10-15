@@ -23,8 +23,6 @@ body {
     width: 100%;
     background-color: #F6F8FA;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
     color: #6B7C86;
 }
 
@@ -93,12 +91,14 @@ main {
     scroll-margin-top: 4.5rem;
 }
 
-
+main > * {
+    padding: 1.2rem 20%;
+}
 
 .hero {
     width: 100%;
     background-color: #EAF4EE;
-    padding: 1.2rem 20%;
+    /* padding: 1.2rem 20%; */
     position: relative;
 
     .eyebrow {
@@ -120,7 +120,7 @@ main {
 
     }
 }
-
+/* 
 .hero::before {
     position: absolute;
     content: "";
@@ -129,9 +129,9 @@ main {
     bottom: 3.5rem;
     width: 3px;
     background-color: #2E7D6B;
-}
+} */
 
-@media(min-width: 1560px) {
+/* @media(min-width: 1560px) {
     .hero::after {
     position: absolute;
     content: "";
@@ -143,5 +143,5 @@ main {
     top: 4rem;
     right: calc(20% + 0.5rem);
 }
-}
+} */
 
